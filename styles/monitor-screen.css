@@ -3,7 +3,7 @@
     section {
     	position: relative; 
         width: 100%; 
-        height: 30vh;
+        height: 15vh;
         display: flex;
         justify-content: center; 
         align-items:flex-end;
@@ -44,3 +44,38 @@
     	color: #fff;
         font-size:1.2em; 
     }
+
+
+    .card-cont{
+        display: flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-left: 50px;
+        padding-right: 50px;
+        /* width: 100%; */
+    }
+
+
+    .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 150px;
+        height: 150px;
+        margin: 15px;
+        flex-basis: 24.0%
+
+      }
+      
+      /* On mouse-over, add a deeper shadow */
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+      
+      /* Add some padding inside the card container */
+      .container {
+        padding: 2px 16px;
+        width: 150px;
+      }
