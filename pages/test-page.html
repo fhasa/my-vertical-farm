@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../styles/newpage.css" />
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+    <script src="../mqts.js"></script>
+    <script src="../paho.javascript-1.0.3/paho-mqtt.js"></script>
+
+    
+  </head>
+  <body>
+    <script>
+      connectToMqtt();
+    </script>
+    <div class="sidebar">
+      <p class="logo">MyFarm</p>
+      <a class="active" href="#home">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+    </div>
+
+    <div class="content">
+      <!--     
+    <h2>Responsive Sidebar Example</h2>
+  <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
+  <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
+ -->
+      <div
+        class="card"
+        style="
+          width: 31rem;
+          background-color: #f8f9fa;
+          margin-bottom: 50px;
+          margin-top: 40px;
+          margin-left: 120px;
+        "
+      >
+        <div class="card-body">
+          <h5 class="card-title">
+            Welcome Ali, Lets see whats going on with your Farm
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">new day, new work</h6>
+        </div>
+      </div>
+      <h2  style="margin-bottom: 60px;margin-left: 26%;margin-top: 30px;"><span class="heading1" > your Farms reading</span>
+       </h2>
+      <div class="wtr-cont">
+        <div class="card bg-light mb-3 fatima" style="min-width: 10rem">
+          <div class="card-header" style="font-size: 30px">pH</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 20px"
+              id="iot_vertical_farming_ppu2022/branch1/sensor_valueph"
+            >
+              5.5
+            </h5>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-3 fatima" style="min-width: 10rem">
+          <div class="card-header" style="font-size: 30px">TDS</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 20px"
+              id="iot_vertical_farming_ppu2022/branch1/sensor_valuetds"
+            >
+              450
+            </h5>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-3 fatima" style="max-width: 18rem">
+          <div class="card-header" style="font-size: 30px">
+            water temperature
+          </div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 85px"
+              id="iot_vertical_farming_ppu2022/branch1/sensor_valuewater_temperature"
+            >
+              25
+            </h5>
+          </div>
+        </div>
+      </div>
+      <h2 style="margin-top: 40px; margin-bottom: 40px; "><span style=" color: #04AA6D;margin-left: 38%;   padding: 10px; border: 3px dotted #04AA6D; ">Branch 1</span></h2>
+
+      <div class="wtr-cont">
+        <div class="card bg-light mb-3 fatima" style="min-width: 10rem">
+          <div class="card-header" style="font-size: 30px">Humidity</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 20px"
+              id="iot_vertical_farming_ppu2022/branch1/sensor_valueair_humidity"
+            >
+              5.5
+            </h5>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-3 fatima" style="min-width: 10rem">
+          <div class="card-header" style="font-size: 30px">Light Intensity</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 20px"
+              id="iot_vertical_farming_ppu2022/branch1/sensor_valuelight_intensity"
+            >
+              450
+            </h5>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-3 fatima" style="max-width: 18rem">
+          <div class="card-header" style="font-size: 30px">Air temperature</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 85px"
+              id="iot_vertical_farming_ppu2022/branch1/sensor_valueair_temperature"
+            >
+              25
+            </h5>
+          </div>
+        </div>
+      </div>
+      <h4 style="margin-top: 40px; margin-bottom: 40px; "><span style=" color: #04AA6D;margin-left: 38%;   padding: 10px; border: 3px dotted #04AA6D; ">Branch 2</span></h4>
+
+      <div class="wtr-cont">
+        <div class="card bg-light mb-3 fatima" style="min-width: 10rem">
+          <div class="card-header" style="font-size: 30px">Humidity</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 20px"
+              id="iot_vertical_farming_ppu2022/branch2/sensor_valueair_humidity"
+            >
+              5.5
+            </h5>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-3 fatima" style="min-width: 10rem">
+          <div class="card-header" style="font-size: 30px">Light Intensity</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 20px"
+              id="iot_vertical_farming_ppu2022/branch2/sensor_valuelight_intensity"
+            >
+              450
+            </h5>
+          </div>
+        </div>
+
+        <div class="card bg-light mb-3 fatima" style="max-width: 18rem">
+          <div class="card-header" style="font-size: 30px">Air temperature</div>
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="font-size: 45px; padding-left: 85px"
+              id="iot_vertical_farming_ppu2022/branch2/sensor_valueair_temperature"
+            >
+              25
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="posright">
+        <div class="card cont-form">
+          <h5 class="card-header">Control Farm</h5>
+          <div class="card-body">
+            <div class="control-container">
+              <!-- big pump start here -->
+              <h5 class="big-pump">Big pump control</h5>
+
+              <div class="pump1 ro">
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_big_pump1_water_flow"
+                    id="flexRadioDefault1"
+                    value="on"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    on
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_big_pump1_water_flow"
+                    value="off"
+                    id="flexRadioDefault2"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    off
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_big_pump1_water_flow"
+                    id="flexRadioDefault3"
+                    value="auto"
+                    onclick="takeAction(this)"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    auto
+                  </label>
+                </div>
+              </div>
+              <!-- big pump start here -->
+              <!-- acid pumps start here -->
+              <h5 class="acid-small-pump">Acid small pump</h5>
+              <div class="pump1-small-acid ro">
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump1_acid"
+                    id="flexRadioDefault1"
+                    value="on"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    on
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump1_acid"
+                    value="off"
+                    id="flexRadioDefault2"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    off
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump1_acid"
+                    id="flexRadioDefault3"
+                    value="auto"
+                    onclick="takeAction(this)"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    auto
+                  </label>
+                </div>
+              </div>
+
+              <!--  base small pump control code  -->
+              <h5 class="base-small-pump">Base small pump</h5>
+              <div class="pump2-small-base ro">
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump2_base"
+                    id="flexRadioDefault1"
+                    value="on"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    on
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump2_base"
+                    value="off"
+                    id="flexRadioDefault2"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    off
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump2_base"
+                    id="flexRadioDefault3"
+                    value="auto"
+                    onclick="takeAction(this)"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    auto
+                  </label>
+                </div>
+              </div>
+
+              <!-- end of base small pump control code  -->
+              <!-- nutrient pump control code  -->
+              <h5 class="nutrient-small-pump">Nutrient small pump</h5>
+              <div class="pump3-small-nutrient ro">
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump3_nutrient"
+                    id="flexRadioDefault1"
+                    value="on"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    on
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump3_nutrient"
+                    value="off"
+                    id="flexRadioDefault2"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    off
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/centric/manual_small_pump3_nutrient"
+                    id="flexRadioDefault3"
+                    value="auto"
+                    onclick="takeAction(this)"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    auto
+                  </label>
+                </div>
+              </div>
+              <!-- end of nutrient pump control code  -->
+
+              <!--  light branch 1 control code  -->
+              <h5 class="light-1">Light branch-1</h5>
+              <div class="light-1 ro">
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/branch1/manual_light"
+                    id="flexRadioDefault1"
+                    value="on"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    on
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/branch1/manual_light"
+                    value="off"
+                    id="flexRadioDefault2"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    off
+                  </label>
+                </div>
+                <div class="form-check space-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/branch1/manual_light"
+                    id="flexRadioDefault3"
+                    value="auto"
+                    onclick="takeAction(this)"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    auto
+                  </label>
+                </div>
+              </div>
+              <!-- end of light branch 1 control code  -->
+
+              <!-- start of light branch 2 control code  -->
+              <h5>Light branch-2</h5>
+              <div class="light-2 ro">
+                <div class="form-check  space-radio choise-pad">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/branch2/manual_light"
+                    id="flexRadioDefault1"
+                    value="on"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    on
+                  </label>
+                </div>
+                <div class="form-check  space-radio choise-pad">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/branch2/manual_light"
+                    value="off"
+                    id="flexRadioDefault2"
+                    onclick="takeAction(this)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    off
+                  </label>
+                </div>
+                <div class="form-check  space-radio choise-pad">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="iot_vertical_farming_ppu2022/branch2/manual_light"
+                    id="flexRadioDefault3"
+                    value="auto"
+                    onclick="takeAction(this)"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    auto
+                  </label>
+                </div>
+              </div>
+              <!-- end of light branch 2 control code-->
+            </div>
+
+            
+          </div>
+        </div>
+
+        <!-- here start of info box -->
+        <!-- 
+          <div class="card" style="width: 18rem; margin-left: 70px;margin-top: 30px;margin-bottom: 20px;">
+            <img class="card-img-top" src="https://www.thespruceeats.com/thmb/AelRq948c-qKV8wFVLDdclovBWU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-is-bibb-lettuce-and-how-to-use-it-4782115_Hero_01-c9c955f1cb4348358c200387147c2d7a.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-text">Lettuce</h3>
+              <p>ph between 5 - 5.5</p>
+              <p>TDS between 400 - 600</p>
+              <p>TDS between 400 - 600</p>
+              
+            </div>
+          </div> -->
+
+        <!-- here end of info box -->
+      </div>
+    </div>
+  </body>
+</html>
