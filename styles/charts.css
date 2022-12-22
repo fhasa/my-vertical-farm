@@ -8,11 +8,11 @@ body {
   padding: 0;
   width: 220px;
   background-color: #04AA6D;
-  /* border-right: 1px solid rgba(128, 128, 128, 0.849); */
  padding-top: 30px;
   position: fixed;
   height: 100%;
   overflow: auto;
+  z-index: 1;
 
 }
 

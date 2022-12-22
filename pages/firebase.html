@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script type="module" src="../src/index.js"></script>
+
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+        import {  getDatabase, ref, onValue, child, get  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        
+
+
+
+// here code of filling graphs 
+/**********************************************************/
+// function makeGraph(JsValues){
+//    let br1light=[];
+//     let br1temp=[];
+//     let br1hum=[];
+//     let br1date=[];
+//     JsValues.forEach(elem=>{
+//         br1light.push(elem.light_intensity);
+//         br1temp.push(elem.air_temperature);
+//         br1hum.push(elem.air_humidity);
+//         console.log(elem.air_humidity);
+//     });
+//    let count=[];
+//     for(let i=0; i<br1hum.length();i++){
+//         count.push(i);
+
+//     }
+
+// new Chart("myChart", {
+//   type: "line",
+//   data: {
+//     labels: count,
+//     datasets: [{
+//       fill: false,
+//       lineTension: 0,
+//       backgroundColor: "rgba(0,0,255,1.0)",
+//       borderColor: "rgba(0,0,255,0.1)",
+//       data: br1light
+//     }]
+//   },
+//   options: {
+//     legend: {display: false},
+//     scales: {
+//       yAxes: [{ticks: {min: 6, max:16}}],
+//     }
+//   }
+// });
+ 
+
+// const el = document.createElement('canvas');
+
+
+// el.setAttribute('id', 'myChart');
+// el.style.width="600px";
+// el.style.height="600px";
+
+// }
+
+
+
+
+
+
+
+
+/**********************************************************/
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyADywmfNsRaT-9RnE1MXS24nS5ujfgseBg",
+          authDomain: "iot-vertical-farming-40e8a.firebaseapp.com",
+          databaseURL: "https://iot-vertical-farming-40e8a-default-rtdb.firebaseio.com",
+          projectId: "iot-vertical-farming-40e8a",
+          storageBucket: "iot-vertical-farming-40e8a.appspot.com",
+          messagingSenderId: "372914315084",
+          appId: "1:372914315084:web:a609be0fc0f122561979e9",
+          measurementId: "G-8V3RS63HZW"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        // const db = getDatabase();
+ 
+// function to get all data
+// function GetAllDataOnce(){
+//     const dbRef =ref(db);
+//     get(child(dbRef,"branch1")).then((snapshot)=>{
+//         var students=[];
+//         snapshot.forEach(childSnapshot => {
+//             students.push(childSnapshot.val());
+//             makeGraph(students)
+
+//         }) 
+//     });
+// }
+// import {} from "firebase/database";
+
+var postElement = document.getElementById("postElement");
+
+
+var updateStarCount = function(element, value) {
+    element.textContent = value;
+};
+
+const db = getDatabase();
+const starCountRef = ref(db, 'branch1/' );
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
+
+
+</script>
+
+
+
+
+    <div id="postElement"></div>
+
+
+
+</body>
+</html>
+
+
