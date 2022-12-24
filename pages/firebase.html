@@ -15,52 +15,52 @@
 
 // here code of filling graphs 
 /**********************************************************/
-// function makeGraph(JsValues){
-//    let br1light=[];
-//     let br1temp=[];
-//     let br1hum=[];
-//     let br1date=[];
-//     JsValues.forEach(elem=>{
-//         br1light.push(elem.light_intensity);
-//         br1temp.push(elem.air_temperature);
-//         br1hum.push(elem.air_humidity);
-//         console.log(elem.air_humidity);
-//     });
-//    let count=[];
-//     for(let i=0; i<br1hum.length();i++){
-//         count.push(i);
+function makeGraph(JsValues){
+   let br1light=[];
+    let br1temp=[];
+    let br1hum=[];
+    let br1date=[];
+    JsValues.forEach(elem=>{
+        br1light.push(elem.light_intensity);
+        br1temp.push(elem.air_temperature);
+        br1hum.push(elem.air_humidity);
+        console.log(elem.air_humidity);
+    });
+   let count=[];
+    for(let i=0; i<br1hum.length();i++){
+        count.push(i);
 
-//     }
+    }
 
-// new Chart("myChart", {
-//   type: "line",
-//   data: {
-//     labels: count,
-//     datasets: [{
-//       fill: false,
-//       lineTension: 0,
-//       backgroundColor: "rgba(0,0,255,1.0)",
-//       borderColor: "rgba(0,0,255,0.1)",
-//       data: br1light
-//     }]
-//   },
-//   options: {
-//     legend: {display: false},
-//     scales: {
-//       yAxes: [{ticks: {min: 6, max:16}}],
-//     }
-//   }
-// });
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: count,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: br1light
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
  
 
-// const el = document.createElement('canvas');
+const el = document.createElement('canvas');
 
 
-// el.setAttribute('id', 'myChart');
-// el.style.width="600px";
-// el.style.height="600px";
+el.setAttribute('id', 'myChart');
+el.style.width="600px";
+el.style.height="600px";
 
-// }
+}
 
 
 
@@ -88,17 +88,17 @@
         // const db = getDatabase();
  
 // function to get all data
-// function GetAllDataOnce(){
-//     const dbRef =ref(db);
-//     get(child(dbRef,"branch1")).then((snapshot)=>{
-//         var students=[];
-//         snapshot.forEach(childSnapshot => {
-//             students.push(childSnapshot.val());
-//             makeGraph(students)
+function GetAllDataOnce(){
+    const dbRef =ref(db);
+    get(child(dbRef,"branch1")).then((snapshot)=>{
+        var students=[];
+        snapshot.forEach(childSnapshot => {
+            students.push(childSnapshot.val());
+            makeGraph(students)
 
-//         }) 
-//     });
-// }
+        }) 
+    });
+}
 // import {} from "firebase/database";
 
 var postElement = document.getElementById("postElement");
