@@ -9,7 +9,6 @@ import {
   limitToLast,
   onValue,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-// import {Chart} from 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js'
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -101,7 +100,28 @@ onValue(water, (snapshot) => {
   }
 });
 
+// here last element in branch2 document
+const branch2last = query(
+  ref(database, "sensor_value_history/branch2"),
+  limitToLast(1)
+);
 
+onValue(branch2last, (snapshot) => {
+  const branch2data = snapshot.val();
+  for(let v in branch2data){
+    var light2= branch2data[v].light_intensity;
+    document.getElementById("lightint2").innerHTML=light2;
+    var humidity2=branch2data[v].air_humidity;
+    document.getElementById("humidity2").innerHTML=humidity2;
+    var airt2=branch2data[v].air_temperature;
+    document.getElementById('airt22').innerHTML=airt2;
+    var date2=branch2data[v].datetime;
+    document.getElementById('datebr2').innerHTML=date2;
+  }
+
+
+
+});
 
 
 
@@ -188,37 +208,33 @@ var chartds1= new Chart("myChart1", {
 
 
 // start of water temp charts
+
+var chrwt = document.getElementById("myChart3").getContext("2d");
+var chartwt1= new Chart("myChart3", {
+  type: "line",
+  data: {
+      labels: cdatem,
+      datasets: [
+          {
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(255, 0, 102,1.0)",
+              borderColor: "rgba(255, 0, 102,0.1)",
+              data: wtempm,
+          },
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 40} }],
+      },
+  },
+});
 //end of water temp charts 
-
+chartwt1.update();
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 
 
 get(child(dbRef, "sensor_value_history/branch1"))
   .then((snapshot) => {
@@ -238,49 +254,195 @@ get(child(dbRef, "sensor_value_history/branch1"))
         xlight.push(datajson[key].light_intensity);
       }
 
-      var ctx = document.getElementById("myChart").getContext("2d");
-      var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: "line",
+// light intensity chart
+var cli = document.getElementById("myChart4").getContext("2d");
 
-        // The data for our dataset
-        data: {
-          labels: xdate, // X-axis labels will be added dynamically
-          datasets: [
-            {
-              label: "Air Temperature",
-              backgroundColor: "rgb(255, 99, 132, .005)",
+var cli1= new Chart("myChart4", {
+  type: "line",
+  data: {
+      labels: xdate,
+      datasets: [
+          {
+              fill: false,
               lineTension: 0,
-              borderColor: "rgb(255, 99, 132, 1)",
-              pointRadius: 1,
-              borderWidth: 1,
-              data: xtemp,
-              // Y-axis values will be added dynamically
-            },
-          ],
-        },
-
-        // Configuration options go here
-        options: {
-          scales: {
-            yAxes: [{ ticks: { min: 0, max: 50 } }],
-            xAxes: [
-              {
-                display: false, // hide the labels on the x-axis
-              },
-            ],
+              backgroundColor: "rgba(153, 51, 255,1.0)",
+              borderColor: "rgba(153, 51, 255,0.1)",
+              data: xlight,
           },
-          //   scales: {
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 1000 } }],
+      },
+  },
+});
 
-          // }
-        },
-      });
+// light intensity charts end
+// humidity starts
+var humidity = document.getElementById("myChart44").getContext("2d");
+var chum = document.getElementById("myChart44").getContext("2d");
 
-    } else {
-      console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    console.error(error);
+var chum1= new Chart("myChart44", {
+  type: "line",
+  data: {
+      labels: xdate,
+      datasets: [
+          {
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(153, 51, 255,1.0)",
+              borderColor: "rgba(153, 51, 255,0.1)",
+              data: xhum,
+          },
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 100 } }],
+      },
+  },
+});
+console.log(xhum);
+// humidity ends
+
+//Air Temperature start
+var artt1chrt = document.getElementById("myChart6").getContext("2d");
+
+var artt1ch=new Chart("myChart6", {
+  type: "line",
+  data: {
+      labels: xdate,
+      datasets: [
+          {
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(255,100,0,1.0)",
+              borderColor: "rgba(255,100,0,0.1)",
+              data: xtemp,
+          },
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 50 } }],
+      },
+  },
+});
+
+
+//Air Temperature ends
+
+
+
+//branch2
+get(child(dbRef, "sensor_value_history/branch1"))
+  .then((snapshot) => {
+    var temp2=[];
+    var hum2=[];
+    var lightint22=[];
+    var datedate2=[];
+const branch2listofData = snapshot.val();
+// console.log(branch2listofData);
+
+for( let g in branch2listofData){
+temp2.push(branch2listofData[g].air_temperature);
+hum2.push(branch2listofData[g].air_humidity);
+lightint22.push(branch2listofData[g].light_intensity)
+datedate2.push(branch2listofData[g].datetime);
+}
+
+
+
+
+
+//Air Temperature start
+var light2chrt = document.getElementById("myChart99").getContext("2d");
+
+var light22chrt=new Chart("myChart99", {
+  type: "line",
+  data: {
+      labels: datedate2,
+      datasets: [
+          {
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(255,100,0,1.0)",
+              borderColor: "rgba(255,100,0,0.1)",
+              data: lightint22,
+          },
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 1000 } }],
+      },
+  },
+});
+
+//air temp
+
+var hum2chrt = document.getElementById("myChart100").getContext("2d");
+
+var hum1ch=new Chart("myChart100", {
+  type: "line",
+  data: {
+      labels: datedate2,
+      datasets: [
+          {
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(255,200,0,1.0)",
+              borderColor: "rgba(255,200,0,0.1)",
+              data: hum2,
+          },
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 100 } }],
+      },
+  },
+});
+
+var temp2chrt = document.getElementById("myChart111").getContext("2d");
+
+var artt1ch=new Chart("myChart111", {
+  type: "line",
+  data: {
+      labels: datedate2,
+      datasets: [
+          {
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(100,200,70,1.0)",
+              borderColor: "rgba(100,200,70,0.1)",
+              data: temp2,
+          },
+      ],
+  },
+  options: {
+      legend: { display: false },
+      scales: {
+          yAxes: [{ ticks: { min: 0, max: 100 } }],
+      },
+  },
+});
   });
+  artt1ch.update();
 
+} else {
+console.log("No data available");
+}
+})
+.catch((error) => {
+console.error(error);
+});
+
+
+  
