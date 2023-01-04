@@ -75,44 +75,16 @@
         <!-- water tank statistics container starts here  -->
         <div class="card" style="min-width: 70rem; margin-bottom: 20px;">
             <h5 class="card-header">Water Tank parameters Statistics</h5>
-            <div style="display: flex;flex-direction: row;justify-content: space-around;" class="card-body">
+            <div style="display: flex;flex-direction: column;justify-content: space-around;" class="card-body">
                 <!-- ph statistics here -->
 
-                <div class="card border-success mb-3" style="max-width: 22rem">
+                <div class="card border-success mb-3" style="max-width: 70rem">
                     <div class="card-header bg-transparent border-success">pH</div>
                     <div class="card-body text-success">
 
-                        <canvas id="myChart2" style="width: 100%; max-width: 300px "></canvas>
+                        <canvas id="myChart2" style="width: 100%; max-width: 1000px "></canvas>
 
-                        <script>
-                            var xValues = [
-                                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-                            ];
-                            var yValues = [5, 5.5, 5.4, 3.11, 4.4, 4.9, 5.0, 5.5, 5.6, 5.5, 6];
-
-                            new Chart("myChart2", {
-                                type: "line",
-                                data: {
-                                    labels: xValues,
-                                    datasets: [
-                                        {
-                                            fill: false,
-                                            lineTension: 0,
-                                            backgroundColor: "rgba(0,255,0,1.0)",
-                                            borderColor: "rgba(0,255,0,0.1)",
-                                            data: yValues,
-                                        },
-                                    ],
-                                },
-                                options: {
-                                    legend: { display: false },
-                                    scales: {
-                                        yAxes: [{ ticks: { min: 0, max: 14 } }],
-                                    },
-                                },
-                            });
-                        </script>
-
+                        
 
                     </div>
 
@@ -121,40 +93,13 @@
 
                 <!-- ph statistics here -->
 
-                <div class="card border-success mb-3" style="max-width: 22rem">
+                <div class="card border-success mb-3" style="max-width: 70rem">
                     <div class="card-header bg-transparent border-success">TDS</div>
                     <div class="card-body text-success">
 
-                        <canvas id="myChart1" style="width: 100%; max-width: 300px "></canvas>
+                        <canvas id="myChart1" style="width: 100%; max-width: 1000px "></canvas>
 
-                        <script>
-                            var xValues = [
-                                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-                            ];
-                            var yValues = [440, 450, 516, 700, 8000, 8700,9000, 500, 660, 650, 700];
-
-                            new Chart("myChart1", {
-                                type: "line",
-                                data: {
-                                    labels: xValues,
-                                    datasets: [
-                                        {
-                                            fill: false,
-                                            lineTension: 0,
-                                            backgroundColor: "rgba(0,0,255,1.0)",
-                                            borderColor: "rgba(0,0,255,0.1)",
-                                            data: yValues,
-                                        },
-                                    ],
-                                },
-                                options: {
-                                    legend: { display: false },
-                                    scales: {
-                                        yAxes: [{ ticks: { min: 300, max: 10000 } }],
-                                    },
-                                },
-                            });
-                        </script>
+                      
 
 
                     </div>
@@ -204,6 +149,29 @@
 
                 </div>
                 <!-- water temp ends -->
+            </div>
+            <div class="card-footer bg-transparent border-success" style="display: flex;flex-direction: row;">
+                
+                <div class="lastreads">
+                    <div class="contnem">
+                        <h3>pH:</h3>
+                        <h3 class="ph" id="ph" style="color: grey;"></h3>
+                    </div>
+                    <div class="contnem">
+                        <h3>TDS:</h3>
+                        <h3 class="tds" id="tds" style="color: grey;" ></h3>
+                    </div>
+                    <div class="contnem">
+                        <h3>Water temp:</h3>
+                        <h3 class="wtmp" id="wtmp" style="color: grey;"></h3>
+                    </div>
+                    <div class="contnem">
+                        <h3>date:</h3>
+                        <h3 class="datec" id="datec" style="color: grey;"></h3>
+                    </div>
+                </div>
+           
+           
             </div>
 
 
@@ -262,34 +230,6 @@
 
                         <canvas id="myChart" style="width: 100%; max-width: 300px "></canvas>
 
-                        <!-- <script>
-                            var xValues = [
-                                1,2,3,4,5,6,7,8,9,10,11
-                            ];
-                            var yValues = [52,53,55,54,56,52,54,54,55,56,55];
-
-                            new Chart("myChart5", {
-                                type: "line",
-                                data: {
-                                    labels: xValues,
-                                    datasets: [
-                                        {
-                                            fill: false,
-                                            lineTension: 0,
-                                            backgroundColor: "rgba(0,140,255,1.0)",
-                                            borderColor: "rgba(0,140,255,0.1)",
-                                            data: yValues,
-                                        },
-                                    ],
-                                },
-                                options: {
-                                    legend: { display: false },
-                                    scales: {
-                                        yAxes: [{ ticks: { min: 20, max: 80 } }],
-                                    },
-                                },
-                            });
-                        </script> -->
 
 
                     </div>
@@ -336,11 +276,45 @@
 
 
                     </div>
+                    
 
                 </div>
+                
             </div>
-        </div>
 
+            <div class="card-footer bg-transparent border-success">
+                
+
+
+                <div class="lastreads">
+
+                    <div class="contnem">
+                        <h3>Humidity: </h3>
+                        <h3 id="humidity1" style="color: gray;"></h3>
+                    </div>
+
+                    <div class="contnem">
+                        <h3>Air temp: </h3>
+                        <h3 id="airt1" style="color: grey;"></h3>
+                    </div>
+
+                    <div class="contnem">
+                        <h3>Light Intensity: </h3>
+                        <h3 id="lightint1" style="color: grey;" ></h3>
+                    </div>
+                    <div class="contnem">
+                        <h3>date:   </h3>
+                        <h3 id="datebr1" style="color: grey;" ></h3>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            
+        </div>
+        
         <!-- end of 2nd cont -->
     </div>
     <!-- water tank statistics container ends here  -->
