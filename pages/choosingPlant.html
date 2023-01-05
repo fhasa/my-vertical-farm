@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../styles/typing.css" />
   <link rel="stylesheet" href="../styles/plant-choose-page-styles.css" />
-
+<script src="./choosing.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -27,8 +27,8 @@
   <div class="main-container">
     <!-- <h1 class="main-statement">Choose the next crop</h1> -->
 
-    <div class="card-main-container">
-      <div class="card">
+    <div class="card-main-container" >
+      <div class="card" id="plant_id1"  >
         <img
           src="../img/lettuce.jpg"
           alt="Avatar"
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="plant_id2">
         <img
           src="../img/chard.jpg"
           alt="Avatar"
@@ -52,28 +52,28 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="plant_id3">
         <img src="../img/cabbage.jpg" alt="Avatar" style="width: 100%" />
         <div class="card-container">
           <h4><b>Cabbage</b></h4>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="plant_id4">
         <img src="../img/spinach.jfif" alt="Avatar" style="width: 100%" />
         <div class="card-container">
           <h4><b>spinach</b></h4>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="plant_id5">
         <img src="../img/mint.png" alt="Avatar" style="width: 100%" />
         <div class="card-container">
           <h4><b>Mint</b></h4>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="plant_id6" onclick="">
         <img src="../img/basil.jfif" alt="Avatar" style="width: 100%" />
         <div class="card-container">
           <h4><b>Basil</b></h4>
@@ -81,6 +81,10 @@
       </div>
     </div>
  <button class="processed">Proceed</button>
+ <div class="chise" style="display: flex;flex-direction: row; width:200px;">
+  <h3>chosen plant</h3>
+  <h3 class="choosenplant"></h3>
+ </div>
   </div>
 <footer>
   
